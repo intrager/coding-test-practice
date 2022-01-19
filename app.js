@@ -8,7 +8,7 @@ mongoose.connect("mongodb://localhost/todo-demo", {
   useUnifiedTopology: true,
 });
 const db = mongoose.connection;
-db.on("error", console.error.bind(console, "connection error"));
+db.on("error", console.error.bind(console, "connection error:"));
 
 const app = express();
 const router = express.Router();
@@ -40,7 +40,7 @@ router.post("/todos", async (req, res) => {
 
 router.patch("/todos/:todoId", async (req, res) => {
   const { todoId } = req.params;
-  const { order, value } = req.body;
+  const { order, value, done } = req.body;
 
   const todo = await Todo.findById(todoId).exec();
 
@@ -51,12 +51,20 @@ router.patch("/todos/:todoId", async (req, res) => {
       await targetTodo.save();
     }
     todo.order = order;
-    await todo.save();
+  } else if (value) {
+    todo.value = value;
+  } else if (done !== undefined) {
+    todo.doneAt = done ? new Date() : null;
   }
+  await todo.save();
+  res.send({});
+});
 
-  if (value) {
-  }
+router.delete("/todos/:todoId", async (req, res) => {
+  const { todoId } = req.params;
 
+  const todo = await Todo.findById(todoId).exec();
+  await todo.delete();
   res.send({});
 });
 
