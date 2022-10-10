@@ -13,10 +13,11 @@ public class Main {
         N = scan.nextInt();
         M = scan.nextInt();
         selected = new int[M+1];
+        used = new int[N+1];
     }
     
     static int N, M;
-    static int[] selected;
+    static int[] selected, used;
     
     static void recFunc(int k) {
         if(k == M + 1) { // 1 ~ M번째를 다 골랐을 때
@@ -25,16 +26,12 @@ public class Main {
             sb.append('\n');
         } else {
             for(int cand = 1; cand <= N; cand++) {
-                boolean isUsed = false;
-                for(int i = 1; i < k; i++)
-                    if(selected[i] == cand)
-                        isUsed = true;
-                // k번째에 cand가 올 수 있으면
-                if(!isUsed) { // isUsed가 false면
-                    selected[k] = cand;
-                    recFunc(k+1);
-                    selected[k] = 0;           
-                }
+                if(used[cand] == 1)continue;
+                selected[k]=cand; used[cand]=1;
+                
+                recFunc(k+1);
+                
+                selected[k]=0; used[cand]=0;
             }
         }
     }
