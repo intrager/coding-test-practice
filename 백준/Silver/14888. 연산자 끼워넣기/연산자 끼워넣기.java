@@ -22,7 +22,6 @@ public class Main {
     
     // 피연산자 2개와 연산자 1개가 주어졌을 때 계산해주는 함수
     static int calculator(int operand1, int operator, int operand2) {
-        // value order[i] nums[i+1]
         if(operator == 1) // +
             return operand1 + operand2;
         else if(operator == 2) // -
@@ -32,7 +31,6 @@ public class Main {
         else // /
             return operand1 / operand2;
     }
-    // order[1...N-1]에 연산자들이 순서대로 저장될 것이다.
     // k - 1번째 연산자까지 계산한 결과가 value임
     static void recFunc(int k, int value) {
         if(k == N) {    // 모든 연산자들을 전부 나열하는 방법을 찾은 상태
