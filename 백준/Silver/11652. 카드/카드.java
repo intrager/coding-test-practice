@@ -31,7 +31,6 @@ public class Main {
             } else {
                 curCnt = 1;
             }
-            if(mode == a[i]) modeCnt++;
             if(modeCnt < curCnt) {
                 modeCnt = curCnt;
                 mode = a[i];
