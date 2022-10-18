@@ -6,10 +6,8 @@ public class Main {
     static FastReader scan = new FastReader();
     
     static class Elem implements Comparable<Elem> {
-        /**
-         * idx : A 배열의 idx 위치를 기억하는 변수 - 어떤 값이냐
-         * num : A[idx]의 원래 값 - 어디에 있었냐
-         */
+        // idx : A 배열의 idx위치를 기억하는 변수 - 어떤 값이냐
+        // num : A[idx]의 원래 값 - 어디에 있었냐
         public int num, idx;
         
         @Override
@@ -31,22 +29,18 @@ public class Main {
         P = new int[N];
         for(int i = 0; i < N; i++) {
             B[i] = new Elem();
-            // TODO : Elem의 정의에 맞게 B[i]에 값을 넣어주기
             B[i].num = scan.nextInt();
             B[i].idx = i;
         }
     }
     
     static void pro() {
-        // TODO : B 배열 정렬하기
-        Arrays.sort(B); // idx는 여기부터 정렬 다 됐음 ㅇㅇ
+        Arrays.sort(B);
         
-        // TODO : B 배열의 값을 이용해서 P 배열 채우기
         for(int b_idx = 0; b_idx < N; b_idx++) {
             P[B[b_idx].idx] = b_idx;
         }
         
-        // TODO : P 배열 출력하기
         for(int i = 0; i < N; i++) {
             sb.append(P[i]).append(' ');
         }
@@ -70,7 +64,7 @@ public class Main {
             br = new BufferedReader(new FileReader(new File(s)));
         }
         
-        String next() {
+        String next() { 
             while(st == null || !st.hasMoreElements()) {
                 try {
                     st = new StringTokenizer(br.readLine());
