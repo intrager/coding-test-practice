@@ -21,8 +21,8 @@ public class Main {
         int R = 0, sum = 0, answer = -100 * N;
         for(int L = 1; L + K - 1 <= N; L++) {
             sum -= a[L - 1];
-            while(R + 1 <= L + K - 1)
-                sum += a[++R];    
+            while (R + 1 <= L + K - 1)
+                sum += a[++R];
             answer = Math.max(answer, sum);
         }
         System.out.println(answer);
@@ -77,5 +77,5 @@ public class Main {
             }
             return str;
         }
-    }    
+    }
 }
