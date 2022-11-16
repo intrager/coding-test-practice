@@ -6,30 +6,25 @@ public class Main {
     static FastReader scan = new FastReader();
     
     static int N, S;
-    static int[] A;
+    static int[] a;
     
     static void input() {
         N = scan.nextInt();
         S = scan.nextInt();
-        A = new int[N + 1];
+        a = new int[N + 1];
         for(int i = 1; i <= N; i++) {
-            A[i] = scan.nextInt(); 
+            a[i] = scan.nextInt();
         }
     }
     
     static void pro() {
         int R = 0, sum = 0, answer = N + 1;
         for(int L = 1; L <= N; L++) {
-            sum -= A[L - 1];
-            while(R + 1 <= N && sum < S) {
-                R++;
-                sum += A[R];
-            }
+            sum -= a[L - 1];
+            while(R + 1 <= N && sum < S) sum += a[++R];
             if(sum >= S) answer = Math.min(answer, R - L + 1);
         }
-        if(answer == N + 1) {
-            answer = 0;
-        }
+        if(answer == N + 1) answer = 0;
         System.out.println(answer);
     }
     
