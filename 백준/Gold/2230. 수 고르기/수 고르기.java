@@ -22,7 +22,7 @@ public class Main {
         
         int R = 1, answer = Integer.MAX_VALUE;
         for(int L = 1; L <= N; L++) {
-            while(R + 1 <= N && A[R] - A[L] < M) ++R;
+            while(R + 1 <= N && A[R] - A[L] < M) R++;
             if(A[R] - A[L] >= M) answer = Math.min(answer, A[R] - A[L]);
         }
         System.out.println(answer);
@@ -52,7 +52,7 @@ public class Main {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-            } 
+            }
             return st.nextToken();
         }
         
