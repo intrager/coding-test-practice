@@ -28,7 +28,6 @@ public class Main {
             answer += R - L + 1;
             cnt[A[L]]--;
         }
-        
         System.out.println(answer);
     }
     
