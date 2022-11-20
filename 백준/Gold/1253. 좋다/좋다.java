@@ -24,8 +24,8 @@ public class Main {
             if(L == target_idx) L++;
             else if(R == target_idx) R--;
             else {
-                if(A[L] + A[R] == target) return true;
                 if(A[L] + A[R] > target) R--;
+                else if (A[L] + A[R] == target) return true;
                 else L++;
             }
         }
@@ -51,7 +51,7 @@ public class Main {
         BufferedReader br;
         StringTokenizer st;
         
-        public FastReader() {
+        public FastReader() { 
             br = new BufferedReader(new InputStreamReader(System.in));
         }
         
