@@ -5,7 +5,7 @@ public class Main {
     static StringBuilder sb = new StringBuilder();
     static FastReader scan = new FastReader();
     
-    static int N, X;
+    static int N, x;
     static int[] A;
     
     static void input() {
@@ -15,22 +15,15 @@ public class Main {
             A[i] = scan.nextInt();
         }
         Arrays.sort(A, 1, N + 1);
-        X = scan.nextInt();
+        x = scan.nextInt();
     }
     
     static void pro() {
         int answer = 0, L = 1, R = N;
-        
         while(L < R) {
-            int sum = A[L] + A[R];
-            if(sum == X) {
-                answer++;
-                L++; R--;
-            } else if (sum < X) {
-                L++;
-            } else {
-                R--;
-            }
+            if(A[L] + A[R] == x) answer++;
+            if(A[L] + A[R] >= x) R--;
+            else L++;
         }
         System.out.println(answer);
     }
