@@ -17,26 +17,25 @@ public class Main {
     
     static void add(char x) {
         cnt[x-'a']++;
-        if(cnt[x-'a'] == 1) {
-            kind++;
-        }
     }
     
     static void erase(char x) {
         cnt[x-'a']--;
-        if(cnt[x-'a'] == 0) {
-            kind--;
-        }
     }
     
     static void pro() {
         int len = A.length(), answer = 0;
         for(int R = 0, L = 0; R < len; R++) {
             add(A.charAt(R));
-            if(kind > N) {
+           
+            while(true) {
+                kind = 0;
+                for(int i = 0; i < 26; i++) {
+                    if(cnt[i] != 0) kind++;
+                }
+                if(kind <= N) break;
                 erase(A.charAt(L));
                 L++;
-                continue;
             }
             answer = Math.max(answer, R - L + 1);
         }
