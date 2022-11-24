@@ -1,5 +1,4 @@
-import java.io.*;
-import java.lang.reflect.Array;
+ import java.io.*;
 import java.util.*;
 
 public class Main {
@@ -37,17 +36,16 @@ public class Main {
         }
     }
     
-    static void bfs(int start) {
+    static void bfs(int x) {
         Queue<Integer> que = new LinkedList<>();
-        que.add(start);
-        visit[start] = true;
+        que.add(x);
+        visit[x] = true;
         
         while(!que.isEmpty()) {
-            int x = que.poll();
+            x = que.poll();
             sb.append(x).append(' ');
             for(int y : adj[x]) {
                 if(visit[y]) continue;
-                
                 que.add(y);
                 visit[y] = true;
             }
@@ -81,7 +79,7 @@ public class Main {
         }
         
         String next() {
-            while(st == null || !st.hasMoreElements()) {
+            while (st == null || !st.hasMoreElements()) {
                 try {
                     st = new StringTokenizer(br.readLine());
                 } catch (IOException e) {
