@@ -37,15 +37,15 @@ public class Main {
                 infect[y] = true;
             }
         }
-        int cnt = 0;
-        for(int i = 2; i <= N; i++)
-            if(infect[i]) cnt++;
-        System.out.println(cnt);
     }
     
     static void pro() {
         infect = new boolean[N + 1];
         bfs(1);
+        int cnt = 0;
+        for(int i = 2; i <= N; i++)
+            if(infect[i]) cnt++;
+        System.out.println(cnt);
     }
     
     public static void main(String[] args) {
