@@ -45,7 +45,8 @@ public class Main {
         visit = new boolean[N + 1];
         bfs(1);
         for(int i = 2; i <= N; i++)
-            System.out.println(parent[i]);
+            sb.append(parent[i]).append('\n');
+        System.out.println(sb.toString());
     }
     
     public static void main(String[] args) {
