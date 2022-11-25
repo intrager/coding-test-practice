@@ -20,24 +20,24 @@ public class Main {
             adj[x].add(y);
             adj[y].add(x);
         }
+        visit = new boolean[N + 1];
     }
     
     static void dfs(int x) {
         visit[x] = true;
-        
+           
         for(int y : adj[x]) {
             if(visit[y]) continue;
             dfs(y);
-        }    
+        }
     }
     
     static void pro() {
-        visit = new boolean[N + 1];
         int answer = 0;
         for(int i = 1; i <= N; i++) {
             if(visit[i]) continue;
-            answer++;
             dfs(i);
+            answer++;
         }
         System.out.println(answer);
     }
@@ -92,6 +92,4 @@ public class Main {
             return str;
         }
     }
-    
-    
 }
