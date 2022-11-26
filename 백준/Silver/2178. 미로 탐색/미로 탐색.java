@@ -12,7 +12,7 @@ public class Main {
     static int[][] dir = {{1, 0}, {0, 1}, {-1, 0}, {0, -1}};
     static ArrayList<Integer> group;
     
-    static void input() {
+    static void input(){
         N = scan.nextInt();
         M = scan.nextInt();
         A = new String[N];
@@ -28,7 +28,6 @@ public class Main {
                 dist[i][j] = -1;
             }
         }
-        
         Queue<Integer> Q = new LinkedList<>();
         Q.add(x);
         Q.add(y);
@@ -55,8 +54,7 @@ public class Main {
     
     static void pro() {
         bfs(0, 0);
-        
-        System.out.println(dist[N-1][M-1]);
+        System.out.println(dist[N - 1][M - 1]);
     }
     
     public static void main(String[] args) {
@@ -109,4 +107,5 @@ public class Main {
             return str;
         }
     }
+    
 }
