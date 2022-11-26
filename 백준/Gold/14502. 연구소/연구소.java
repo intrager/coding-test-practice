@@ -38,8 +38,7 @@ public class Main {
         while(!Q.isEmpty()) {
             int x = Q.poll(), y = Q.poll();
             for(int k = 0; k < 4; k++) {
-                int nx = x + dir[k][0];
-                int ny = y + dir[k][1];
+                int nx = x + dir[k][0], ny = y + dir[k][1];
                 if(nx < 1 || ny < 1 || nx > N || ny > M) continue;
                 if(A[nx][ny] != 0) continue;
                 if(visit[nx][ny]) continue;
@@ -48,7 +47,6 @@ public class Main {
                 Q.add(ny);
             }
         }
-        
         int cnt = 0;
         for(int i = 1; i <= N; i++) 
             for(int j = 1; j <= M; j++)
@@ -62,7 +60,6 @@ public class Main {
             return;
         }
         if(idx > B) return;
-        
         A[blank[idx][0]][blank[idx][1]] = 1;
         dfs(idx + 1, selected_cnt + 1);
         
