@@ -16,7 +16,7 @@ class State {
         } else {
             nX[to] += nX[from];
             nX[from] = 0;
-        }
+        } 
         return new State(nX);
     }
 };
@@ -38,7 +38,6 @@ public class Main {
     
     static void bfs(int x1, int x2, int x3) {
         Queue<State> Q = new LinkedList<>();
-        
         visit[x1][x2][x3] = true;
         Q.add(new State(new int[] {x1, x2, x3}));
         
@@ -49,6 +48,7 @@ public class Main {
                 for(int to = 0; to < 3; to++) {
                     if(from == to) continue;
                     State nxt = st.move(from, to, Limit);
+                    
                     if(!visit[nxt.X[0]][nxt.X[1]][nxt.X[2]]) {
                         visit[nxt.X[0]][nxt.X[1]][nxt.X[2]] = true;
                         Q.add(nxt);
@@ -60,6 +60,7 @@ public class Main {
     
     static void pro() {
         bfs(0, 0, Limit[2]);
+        
         for(int i = 0; i <= Limit[2]; i++) {
             if(possible[i]) sb.append(i).append(' ');
         }
