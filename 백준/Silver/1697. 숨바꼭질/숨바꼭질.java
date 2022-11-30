@@ -29,12 +29,12 @@ public class Main {
                 dist[x-1] = dist[x] + 1;
                 que.add(x-1);
             }
-            if((x+1 >= 0 && x+1 <= 100000) && !visit[x+1]) {
+            if(x+1 <= 100000 && !visit[x+1]) {
                 visit[x+1] = true;
                 dist[x+1] = dist[x] + 1;
                 que.add(x+1);
             }
-            if((x*2 >= 0 && x*2 <= 100000) && !visit[x*2]) {
+            if(x*2 <= 100000 && !visit[x*2]) {
                 visit[x*2] = true;
                 dist[x*2] = dist[x] + 1;
                 que.add(x*2);
