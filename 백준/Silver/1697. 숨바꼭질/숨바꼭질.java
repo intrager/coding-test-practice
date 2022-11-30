@@ -12,31 +12,29 @@ public class Main {
     static void input() {
         N = scan.nextInt();
         K = scan.nextInt();
-        dist = new int[N + 1];
         visit = new boolean[100005];
         dist = new int[100005];
     }
     
     static void bfs() {
-        Queue<Integer> que = new LinkedList<>();       
-        
+        Queue<Integer> que = new LinkedList<>();
         que.add(N);
         visit[N] = true;
         dist[N] = 0;
         
         while(!que.isEmpty()) {
             int x = que.poll();
-            if(x - 1 >= 0 && x - 1 <= 100000 && !visit[x-1]) {
+            if((x-1 >= 0 && x-1 <= 100000) && !visit[x-1]) {
                 visit[x-1] = true;
-                dist[x - 1] = dist[x] + 1;
+                dist[x-1] = dist[x] + 1;
                 que.add(x-1);
             }
-            if(x + 1 >= 0 && x + 1 <= 100000 && !visit[x+1]) {
+            if((x+1 >= 0 && x+1 <= 100000) && !visit[x+1]) {
                 visit[x+1] = true;
-                dist[x + 1] = dist[x] + 1;
+                dist[x+1] = dist[x] + 1;
                 que.add(x+1);
             }
-            if(x*2 >= 0 && x*2 <= 100000 && !visit[x*2]) {
+            if((x*2 >= 0 && x*2 <= 100000) && !visit[x*2]) {
                 visit[x*2] = true;
                 dist[x*2] = dist[x] + 1;
                 que.add(x*2);
@@ -69,7 +67,7 @@ public class Main {
         String next() {
             while(st == null || !st.hasMoreElements()) {
                 try {
-                    st = new StringTokenizer(br.readLine()); 
+                    st = new StringTokenizer(br.readLine());
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
