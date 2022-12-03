@@ -1,8 +1,10 @@
 import java.util.Arrays;
 class Solution {
     public String solution(String my_string) {    
-        char[] answer = my_string.toLowerCase().toCharArray();
-        Arrays.sort(answer, 0, answer.length);
-        return String.valueOf(answer);
+        String answer = "";
+        String[] word = my_string.toLowerCase().split("");
+        Arrays.sort(word);
+        for(int i = 0; i < word.length; i++) answer += word[i];
+        return answer;
     }
 }
