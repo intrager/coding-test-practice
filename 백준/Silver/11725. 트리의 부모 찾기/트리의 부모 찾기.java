@@ -6,47 +6,34 @@ public class Main {
     static StringBuilder sb = new StringBuilder();
     
     static int N;
-    static int[] parent;
     static ArrayList<Integer>[] adj;
-    static boolean[] visit;
+    static int[] parent;
     
     static void input() {
         N = scan.nextInt();
-        parent = new int[N + 1];
         adj = new ArrayList[N + 1];
-        for(int i = 1; i <= N; i++)
-            adj[i] = new ArrayList<>();
-        for(int i = 0; i < N - 1; i++) {
+        parent = new int[N + 1];
+        for(int i = 1; i <= N; i++) adj[i] = new ArrayList<>();
+        for(int i = 1; i < N; i++) {
             int x = scan.nextInt(), y = scan.nextInt();
             adj[x].add(y);
             adj[y].add(x);
-        }
+        } 
     }
     
-    static void bfs(int start) {
-        Queue<Integer> que = new LinkedList<>();
-       
-        que.add(start);
-        visit[start] = true;
-        
-        while(!que.isEmpty()) {
-            int x = que.poll();
-            for(int y : adj[x]) {
-                if(visit[y]) continue;
-                
-                que.add(y);
-                parent[y] = x;
-                visit[y] = true;
-            }
+    static void dfs(int x, int par) {
+        for(int y : adj[x]) {
+            if(y == par) continue;
+            parent[y] = x;
+            dfs(y, x);
         }
     }
     
     static void pro() {
-        visit = new boolean[N + 1];
-        bfs(1);
+        dfs(1, -1);
         for(int i = 2; i <= N; i++)
             sb.append(parent[i]).append('\n');
-        System.out.println(sb.toString());
+        System.out.println(sb);
     }
     
     public static void main(String[] args) {
