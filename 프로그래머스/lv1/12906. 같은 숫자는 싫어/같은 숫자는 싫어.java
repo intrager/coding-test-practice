@@ -2,13 +2,16 @@ import java.util.*;
 
 public class Solution {
     public int[] solution(int []arr) {
-        List<Integer> list = new ArrayList<Integer>();
-        int temp = 0;
-        list.add(arr[0]);
-        for(int i = 1; i < arr.length; i++) {
-            if(arr[i-1] == arr[i]) continue;
-            list.add(arr[i]);
+        ArrayList<Integer> list = new ArrayList<Integer>();
+        int preNum = Integer.MAX_VALUE;
+        for(int num : arr) {
+            if(preNum != num)
+                list.add(num);
+            preNum = num;
         }
-        return list.stream().mapToInt(v->v).toArray();
+        int[] answer = new int[list.size()];
+        for(int i = 0; i < answer.length; i++)
+            answer[i] = list.get(i).intValue();
+        return answer;
     }
 }
