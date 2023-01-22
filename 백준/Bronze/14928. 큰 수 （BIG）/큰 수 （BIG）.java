@@ -13,7 +13,7 @@ public class Main {
             remainder = (remainder * 10 + (Character.getNumericValue(N.charAt(i)))) % 20000303;
         }
         
-        bw.write("" + remainder);
+        bw.write(Long.toString(remainder));
         bw.flush();
         bw.close();
         br.close();
