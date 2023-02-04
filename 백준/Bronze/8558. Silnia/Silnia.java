@@ -7,10 +7,7 @@ public class Main {
         int n = Integer.parseInt(br.readLine());
         
         long answer = 1;
-        for(int i = 1; i <= n; i++) {
-            answer *= i;
-            answer %= 10;
-        }
+        for(int i = 1; i <= n; answer *= i, answer %= 10, i++) { }
         System.out.print(answer);
     }
 }
