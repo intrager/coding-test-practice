@@ -7,10 +7,10 @@ public class Main {
         StringBuilder sb = new StringBuilder();
         
         int T = Integer.parseInt(br.readLine());
-        StringTokenizer st;
         for(int i = 0; i < T; i++) {
-            st = new StringTokenizer(br.readLine(), " ");
-            sb.append(Integer.parseInt(st.nextToken())+Integer.parseInt(st.nextToken())).append('\n');
+            String str = br.readLine();
+            int target = str.indexOf(" ");
+            sb.append(Integer.parseInt(str.substring(0, target))+Integer.parseInt(str.substring(target+1))).append('\n');
         }
         br.close();
         System.out.print(sb);
