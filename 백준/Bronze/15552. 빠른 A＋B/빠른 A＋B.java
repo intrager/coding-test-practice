@@ -13,6 +13,6 @@ public class Main {
             sb.append(Integer.parseInt(st.nextToken())+Integer.parseInt(st.nextToken())).append('\n');
         }
         br.close();
-        System.out.print(sb.toString());
+        System.out.print(sb);
     }
 }
