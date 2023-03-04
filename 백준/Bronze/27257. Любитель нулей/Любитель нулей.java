@@ -5,13 +5,12 @@ public class Main {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         
         String k = br.readLine();
-        boolean flag = true;
         
-        while(flag) {
+        while(true) {
             if(k.charAt(k.length()-1) == '0') {
                 k = k.substring(0, k.length()-1);
             } else {
-                flag = false;
+                break;
             }
         }
         
