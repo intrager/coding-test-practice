@@ -1,13 +1,7 @@
+import java.util.stream.IntStream;
 class Solution {
     public int solution(int[] num_list) {
-        int answer;
-        if(num_list.length >= 11) {
-            answer = 0;
-            for(int i = 0; i < num_list.length; i++) answer += num_list[i];
-        } else {
-            answer = 1;
-            for(int i = 0; i < num_list.length; i++) answer *= num_list[i];      
-        }
-        return answer;
+        IntStream stream = IntStream.of(num_list);
+        return num_list.length > 10 ? stream.sum() : stream.reduce(1, (a, b) -> a * b);
     }
 }
