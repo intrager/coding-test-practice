@@ -2,9 +2,16 @@ import java.util.Arrays;
 
 class Solution {
     public String solution(String my_string, int[] indices) {
-        StringBuilder sb = new StringBuilder(my_string);
-        
-        for(int i : indices) sb.setCharAt(i, ' ');
-        return sb.toString().replace(" ", "");
+        StringBuilder answer = new StringBuilder();
+        int cnt = 0;
+        Arrays.sort(indices);
+        for(int i = 0; i < my_string.length(); i++) {
+            if(indices[cnt] == i) {
+                cnt++;
+                continue;
+            }
+            answer.append(my_string.charAt(i));
+        }
+        return answer.toString();
     }
 }
