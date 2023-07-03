@@ -2,24 +2,22 @@ import java.util.*;
 
 class Solution {
     public int solution(int n) {
-        int answer = n, temp = n, standardCount = 0;
-        char[] convertedStandardArray = convertToArray(n);
-        standardCount = countOneInConvertedNumberToBinary(convertedStandardArray);
-        
-        while(answer < 1000000) {
-            if(standardCount == countOneInConvertedNumberToBinary(convertToArray(++answer))) break;
+        int answer = 0, number = toBinaryOne(n);
+        while(true) {
+            if(number == toBinaryOne(++n)) {
+                answer = n;
+                break;
+            }
         }
         return answer;
     }
     
-    private char[] convertToArray(int number) {
-        return Integer.toBinaryString(number).toCharArray();
-    }
-    private int countOneInConvertedNumberToBinary(char[] charArray) {
-        int countingOne = 0;
-        for(char ch : charArray) {
-            if(ch == '1') countingOne++;
+    private int toBinaryOne(int n) {
+        String binary = Integer.toBinaryString(n);
+        int count = 0;
+        for(int i = 0; i < binary.length(); i++) {
+            if(binary.charAt(i) == '1') count++;
         }
-        return countingOne;
+        return count;
     }
 }
