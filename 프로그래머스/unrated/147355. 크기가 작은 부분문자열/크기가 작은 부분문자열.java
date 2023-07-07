@@ -1,13 +1,14 @@
-import java.math.BigInteger;
+import java.util.stream.LongStream;
 
 class Solution {
     public int solution(String t, String p) {
-        int answer = 0;
-        BigInteger point = new BigInteger(p);
-        for(int i = 0; i < t.length() - p.length()+1; i++) {
-            BigInteger part = new BigInteger(t.substring(i, i + p.length()));
-            if(part.compareTo(point) <= 0) answer++;
-        }
-        return answer;
+        long targetNumber = Long.parseLong(p);
+        int targetNumberLength = p.length();
+        
+        return (int) LongStream.range(0L, t.length() - targetNumberLength + 1L)
+                               .mapToObj(i -> t.substring((int) i, (int) i + targetNumberLength))
+                               .mapToLong(Long::parseLong)
+                               .filter(number -> number <= targetNumber)
+                               .count();
     }
 }
