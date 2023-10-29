@@ -10,6 +10,7 @@ public class Main {
         int B = Integer.parseInt(arr[1]);
         int C = Integer.parseInt(arr[2]);
     
-        System.out.print((B-A) + (C-B));
+        int avg = (A + B + C) / 3;
+        System.out.print((avg - A) + (avg - (B - (avg - A))));
     }
 }
