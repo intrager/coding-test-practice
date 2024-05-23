@@ -1,8 +1,18 @@
-import java.util.HashMap;
-import java.util.stream.IntStream;
-    
 class Solution {
     public int[] solution(String s) {
-        return IntStream.range(0, s.length()).map(i -> s.substring(0, i).lastIndexOf(s.charAt(i)) > -1 ? i - s.substring(0, i).lastIndexOf(s.charAt(i)) : -1).toArray();
+        char[] ch = s.toCharArray();
+        int len = ch.length;
+        int[] answer = new int[len];
+        
+        for(int i = 0; i < len; i++) {
+            answer[i] = -1;
+            for(int j = 1; j <= i; j++) {
+                if(ch[i - j] == ch[i]) {
+                    answer[i] = j;
+                    break;
+                }
+            }
+        }
+        return answer;
     }
 }
