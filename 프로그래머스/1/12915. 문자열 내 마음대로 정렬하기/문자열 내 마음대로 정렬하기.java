@@ -1,22 +1,23 @@
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Collections;
 
 class Solution {
     public String[] solution(String[] strings, int n) {
         String[] answer = {};
         
-        Arrays.sort(strings, new Comparator<String>() {
-            @Override
-            public int compare(String a, String b) {
-                if(a.charAt(n) < b.charAt(n))
-                    return -1;
-                else if(a.charAt(n) > b.charAt(n))
-                    return 1;
-                else if(a.charAt(n) == b.charAt(n))
-                    return a.compareTo(b);
-                else return 0;
-            }
-        });
-        return strings;
+        List<String> list = new ArrayList<>();
+        for(int i = 0; i < strings.length; i++) {
+            list.add("" + strings[i].charAt(n) + strings[i]);
+        }
+        Collections.sort(list);
+        answer = new String[list.size()];
+        
+        for(int i = 0; i < list.size(); i++) {
+            answer[i] = list.get(i).substring(1, list.get(i).length());
+        }
+        return answer;
     }
 }
